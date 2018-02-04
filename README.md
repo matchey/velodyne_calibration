@@ -13,6 +13,8 @@ In this repository, I compiled the source code using ROS for the hardware calibr
 	- topic_pc.yaml
 
 ### How to run
+```
 $ roslaunch velodyne_calibration tf_map2vicon.launch
 $ rosrun velodyne_calibration pub_vicon_pose
+```
 
