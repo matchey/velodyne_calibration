@@ -5,7 +5,6 @@ In this repository, I compiled the source code using ROS for the hardware calibr
 - mmath (https://github.com/matchey/mmath)
 
 ## Create yaml file for Transform (map to vicon)
-
 ### Preparation for the execution
 - Set yaml files
 	- init_pose.yaml
