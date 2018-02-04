@@ -59,7 +59,8 @@ void TFmap2vicon::odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
 					 	 	  msg->pose.pose.orientation.y, msg->pose.pose.orientation.z);
 	Eigen::Quaterniond q_init(Eigen::AngleAxisd(init.theta, Eigen::Vector3d::UnitZ()));
 
-	q_pose = q_init * odom_correction.rotation() * q_pose;
+	// q_pose = q_init * odom_correction.rotation() * q_pose;
+	q_pose = odom_correction.rotation() * q_pose * q_init;
 
 	Eigen::Vector3d v(1, 1, 1);
 	v(0) = x*cos(init.theta) - y*sin(init.theta) + init.x;
@@ -137,7 +138,6 @@ void TFmap2vicon::getPoseICP()
 	cout << "--" << endl;
 	
 	odom_correction = transformation * odom_correction;
-	// odom_correction = odom_correction * transformation;
 	
     //
 	// // Eigen::Vector3d euler = transformation.rotation().eulerAngles(1, 2, 0);
@@ -188,10 +188,10 @@ void TFmap2vicon::saveYaml()
 
 	std::ofstream ofstr("/home/amsl/lastpose.txt"); //launchだと~/.rosがカレントパス
 	if(ofstr){
-		ofstr << "= - (";
+		ofstr << " - (";
 		ofstr << fixed;
 		ofstr << yaw << " - ";
-		ofstr << diff_yaw << ")";
+		ofstr << diff_yaw << ") + 3.141593/180 * ";
 	}else{
 		cerr << "ofstr ERROR" << endl;
 	}

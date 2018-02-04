@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 		// cout << "yaw : "; cin >> yaw;
 
 		cin.ignore();
-		cout << "ok? [Y/n] : ";
+		cout << "ok? (" << x << ", " << y << ") [Y/n] : ";
 		getline(cin, input);
 		if(input[0] == 'n' || input[0] == 'N'){
 			--i;
@@ -70,6 +70,7 @@ int main(int argc, char** argv)
 
 			vp.setPose(pose);
 			vp.publish();
+			cout << "published" << endl;
 		}
 	}
 

@@ -1,2 +1,2 @@
 map:
-    load: "/home/amsl/ros_catkin_ws/src/velodyne_calibration/ws/vicon/map_0.pcd"
+    load: "/home/amsl/ros_catkin_ws/src/velodyne_calibration/ws/vicon/velo90.pcd"
