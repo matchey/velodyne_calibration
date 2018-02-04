@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="complement" pkg="complement" type="complement" />
+
+	<rosparam file="$(find velodyne_calibration)/init_pose.yaml" />
+	<rosparam file="$(find velodyne_calibration)/map_name.yaml" />
+	<rosparam file="$(find velodyne_calibration)/topic_pc.yaml" />
+	<node name="save_tf_map2vicon" pkg="velodyne_calibration" type="save_tf_map2vicon" output="screen" />
+</launch>
+
