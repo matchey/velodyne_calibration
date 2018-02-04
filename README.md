@@ -20,4 +20,9 @@ In this repository, I compiled the source code using ROS for the hardware calibr
 $ roslaunch velodyne_calibration tf_map2vicon.launch
 $ rosrun velodyne_calibration pub_vicon_pose
 ```
+##### Calculate init pose
+```
+$ vim lastpose.txt
+yy o <C-r> = <C-r> 0 <BS> <pose of vicon> <CR>
+```
 
