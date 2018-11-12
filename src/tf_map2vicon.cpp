@@ -97,13 +97,12 @@ void TFmap2vicon::getPoseICP()
 {
 	pcl::PointCloud<pcl::PointNormal>::Ptr cloud (new pcl::PointCloud<pcl::PointNormal>);
 	
-	Eigen::Translation<double, 3> trans = Eigen::Translation<double, 3>(pose.position.x,
-										   							    pose.position.y,
-										   								pose.position.z);
-
 	Eigen::Quaterniond q(pose.orientation.w, pose.orientation.x,
 					 	 pose.orientation.y, pose.orientation.z);
 
+	Eigen::Translation<double, 3> trans = Eigen::Translation<double, 3>(pose.position.x,
+										   							    pose.position.y,
+										   								pose.position.z);
 	Eigen::Affine3d transform = trans * q;
 
 	pcl::transformPointCloud(*pc, *cloud, transform);
